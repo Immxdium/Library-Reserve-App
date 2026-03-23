@@ -14,21 +14,12 @@ def library_reserve_app():                         # This is how you craft custo
     response.headers['Content-Type'] = 'text/html'
     return response
     
-
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     response = make_response()
     response.status_code = 200
     response.headers['Content-Type'] = 'text/html'
     return "Search results will be displayed here."
-
-
-@app.route('/reserve/<string:lamar_id>/<string:room_number>', methods=['GET', 'POST'])
-def reserve_room(lamar_id, room_number):
-    response = make_response()
-    response.status_code = 200
-    response.headers['Content-Type'] = 'text/html'
-    return f"Reserving room {room_number} for user {lamar_id}."
 
 # Put the blueprints registration here
     
