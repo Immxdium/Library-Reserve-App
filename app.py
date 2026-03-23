@@ -22,12 +22,6 @@ def search():
     response.headers['Content-Type'] = 'text/html'
     return "Search results will be displayed here."
 
-@app.route('/user/<string:lamar_id>', methods=['GET', 'POST'])
-def get_user(lamar_id):
-    response = make_response()
-    response.status_code = 200
-    response.headers['Content-Type'] = 'text/html'
-    return f"User: {lamar_id}"
 
 @app.route('/reserve/<string:lamar_id>/<string:room_number>', methods=['GET', 'POST'])
 def reserve_room(lamar_id, room_number):
