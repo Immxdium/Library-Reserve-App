@@ -10,7 +10,7 @@ def get_user(lamar_id):
     return f"User: {lamar_id}"
 
 # Soft delete - deactivates the user
-@users_bp.route('/<string:lamar_id>', methods=['PATCH'])
+@users_bp.route('/<string:lamar_id>/deactivate', methods=['PATCH'])
 def deactivate_user(lamar_id):
     return f"User {lamar_id} has been deactivated."
 
