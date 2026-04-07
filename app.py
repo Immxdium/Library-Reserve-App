@@ -1,4 +1,6 @@
 from flask import Flask, make_response, render_template
+from routes.auth import auth_bp
+from routes.rooms import rooms_bp
 
 app = Flask(__name__, template_folder='templates')
 
@@ -18,6 +20,7 @@ def search():
     return "Search results will be displayed here."
 
 # Put the blueprints registration here
+app.register_blueprint(auth_bp, url_prefix='/auth')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5555, debug=True)

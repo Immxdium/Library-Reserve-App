@@ -15,6 +15,22 @@ def reserve_room(lamar_id, room_number):
     response.headers['Content-Type'] = 'text/html'
     return f"Reserving room {room_number} for user {lamar_id}."
 
+# Check in - user arrives and starts using the room
+@reservations_bp.route('/<string:lamar_id>/<string:room_number>/checkin', methods=['PATCH'])
+def check_in(lamar_id, room_number):
+    response = make_response()
+    response.status_code = 200
+    response.headers['Content-Type'] = 'text/html'
+    return f"Checking in to room {room_number} for user {lamar_id}."
+
+# Check out - user leaves the room
+@reservations_bp.route('/<string:lamar_id>/<string:room_number>/checkout', methods=['PATCH'])
+def check_out(lamar_id, room_number):
+    response = make_response()
+    response.status_code = 200
+    response.headers['Content-Type'] = 'text/html'
+    return f"Checking out of room {room_number} for user {lamar_id}."
+
 # Soft delete - cancels the reservation
 @reservations_bp.route('/<string:lamar_id>/<string:room_number>/cancel', methods=['PATCH'])
 def cancel_reservation(lamar_id, room_number):
