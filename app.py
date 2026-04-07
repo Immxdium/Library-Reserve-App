@@ -1,6 +1,8 @@
 from flask import Flask, make_response, render_template
-from routes.auth import auth_bp
+from routes.users import users_bp
 from routes.rooms import rooms_bp
+from routes.reservations import reservations_bp
+from routes.auth import auth_bp
 
 app = Flask(__name__, template_folder='templates')
 
@@ -21,6 +23,8 @@ def search():
 
 # Put the blueprints registration here
 app.register_blueprint(auth_bp, url_prefix='/auth')
-
+app.register_blueprint(users_bp, url_prefix='/user')
+app.register_blueprint(rooms_bp, url_prefix='/rooms')
+app.register_blueprint(reservations_bp, url_prefix='/reserve')
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5555, debug=True)
