@@ -31,6 +31,14 @@ def check_out(lamar_id, room_number):
     response.headers['Content-Type'] = 'text/html'
     return f"Checking out of room {room_number} for user {lamar_id}."
 
+# Renew/extend a reservation
+@reservations_bp.route('/<string:lamar_id>/<string:room_number>/renew', methods=['PATCH'])
+def renew_reservation(lamar_id, room_number):
+    # TODO: Check if renewal is allowed (30-minute before closing rule)
+    # TODO: Check if the room is available for the extended time
+    # TODO: Update the reservation end time
+    return f"Renewing reservation for room {room_number} for user {lamar_id}."
+
 # Soft delete - cancels the reservation
 @reservations_bp.route('/<string:lamar_id>/<string:room_number>/cancel', methods=['PATCH'])
 def cancel_reservation(lamar_id, room_number):
